@@ -1,4 +1,4 @@
-const InvestorDetails = () => {
+const InvestorDetails: React.FC = () => {
     return <p>Investors Details</p>;
 };
 
