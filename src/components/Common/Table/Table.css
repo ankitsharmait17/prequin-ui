@@ -1,0 +1,25 @@
+/* Appropriate global reset or normalize styles go here if needed */
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px; /* Add some margin for spacing */
+}
+
+.table th,
+td {
+    padding: 10px;
+    text-align: center; /* Middle alignment for table cells */
+    border: 1px solid #ddd; /* Border for the cells */
+    text-transform: capitalize;
+}
+
+/* Optional: Style even and odd rows differently for better readability */
+.table-body tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Optional: Hover effect on rows */
+.table-body tr:hover {
+    background-color: #e0e0e0;
+}

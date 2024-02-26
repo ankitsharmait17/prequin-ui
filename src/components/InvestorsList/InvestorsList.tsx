@@ -1,8 +1,8 @@
 import { Fragment, useEffect, useState } from 'react';
 import { Firm } from '../../services/investors/types';
 import { investorsServiceManager } from '../../services';
-import Table from './Table';
-import Spinner from '../Common/Spinner';
+import Table from './InvestorsTable';
+import Spinner from '../Common/Spinner/Spinner';
 
 const InvestorsList: React.FC = () => {
     const [investorList, setInvestorList] = useState<Firm[]>([]);
