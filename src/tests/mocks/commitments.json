@@ -1,0 +1,30 @@
+[
+    {
+        "id": 63898,
+        "firm_id": 3611,
+        "asset_class": "pe",
+        "amount": "4M",
+        "currency": "HKD"
+    },
+    {
+        "id": 56649,
+        "firm_id": 2792,
+        "asset_class": "nr",
+        "amount": "76M",
+        "currency": "EUR"
+    },
+    {
+        "id": 42918,
+        "firm_id": 3611,
+        "asset_class": "hf",
+        "amount": "26M",
+        "currency": "USD"
+    },
+    {
+        "id": 93946,
+        "firm_id": 332,
+        "asset_class": "re",
+        "amount": "52M",
+        "currency": "USD"
+    }
+]

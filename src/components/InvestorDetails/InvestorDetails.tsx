@@ -54,9 +54,7 @@ const InvestorDetails: React.FC = () => {
                 </select>
             </label>
             {isCommitmentsLoading && <Spinner />}
-            {!isCommitmentsLoading && !isError && commitmentsList?.length !== 0 && (
-                <CommitmentsTable data={commitmentsList} />
-            )}
+            {!isCommitmentsLoading && !isError && <CommitmentsTable data={commitmentsList} />}
             {isError && (
                 <p>Some error occurred while fetching the commitment details. Please try again after some time.</p>
             )}

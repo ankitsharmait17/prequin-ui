@@ -12,6 +12,7 @@ export class InvestorsService {
             headers,
         }).then((response) => {
             if (response.ok) return response.json();
+            return Promise.reject(new Error('Error while fetching investor details'));
         });
     }
 
@@ -27,6 +28,7 @@ export class InvestorsService {
             headers,
         }).then((response) => {
             if (response.ok) return response.json();
+            return Promise.reject(new Error('Error while fetching commitment details'));
         });
     }
 }
