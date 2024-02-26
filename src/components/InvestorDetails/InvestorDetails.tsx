@@ -9,18 +9,23 @@ import Spinner from '../Common/Spinner/Spinner';
 const InvestorDetails: React.FC = () => {
     let { investorId } = useParams();
     const [commitmentsList, setCommitmentsList] = useState<Commitment[]>([]);
-    const [isCommitmentsLoading, setCommitmentsLoading] = useState<boolean>(false);
+    const [isCommitmentsLoading, setIsCommitmentsLoading] = useState<boolean>(false);
+    const [isError, setIsError] = useState<boolean>(false);
 
     const fetchCommitmentDetails = (selectedAsset: string) => {
         if (selectedAsset?.length && investorId?.length) {
-            setCommitmentsLoading(true);
+            setIsError(false);
+            setIsCommitmentsLoading(true);
             investorsServiceManager
                 .getCommitments({ asset_class: selectedAsset, investor_id: parseInt(investorId) })
                 .then((commitmentsData) => {
                     setCommitmentsList(commitmentsData);
                 })
+                .catch((error) => {
+                    setIsError(true);
+                })
                 .finally(() => {
-                    setCommitmentsLoading(false);
+                    setIsCommitmentsLoading(false);
                 });
         } else {
             setCommitmentsList([]);
@@ -37,17 +42,22 @@ const InvestorDetails: React.FC = () => {
                 <Link to={'/'}>Investors {'>'} </Link> Investor #{investorId}
             </div>
             <h2>Investors Details</h2>
-            <label>Asset Class : </label>
-            <select id='select-asset' onChange={handleSelectedAssetChange}>
-                <option value=''>Select</option>
-                {Object.entries(ASSET_CLASSES).map(([id, label]) => (
-                    <option key={id} value={id}>
-                        {label}
-                    </option>
-                ))}
-            </select>
+            <label>
+                {'Asset Class :'}
+                <select id='select-asset' onChange={handleSelectedAssetChange}>
+                    <option value=''>Select</option>
+                    {Object.entries(ASSET_CLASSES).map(([id, label]) => (
+                        <option key={id} value={id}>
+                            {label}
+                        </option>
+                    ))}
+                </select>
+            </label>
             {isCommitmentsLoading && <Spinner />}
-            {!isCommitmentsLoading && <CommitmentsTable data={commitmentsList} />}
+            {!isCommitmentsLoading && !isError && commitmentsList?.length !== 0 && (
+                <CommitmentsTable data={commitmentsList} />
+            )}
+            {isError && <p>Some error occurred. Please try again after some time.</p>}
         </Fragment>
     );
 };
