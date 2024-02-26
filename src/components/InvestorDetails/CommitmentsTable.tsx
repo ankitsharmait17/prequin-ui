@@ -7,7 +7,7 @@ interface CommitmentsTableProps {
 }
 
 const CommitmentsTable: React.FC<CommitmentsTableProps> = ({ data }) => {
-    if (data?.length) {
+    if (!data?.length) {
         return <p>No data available.</p>;
     }
 

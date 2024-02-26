@@ -9,7 +9,7 @@ interface TableProps {
 }
 
 const Table: React.FC<TableProps> = ({ data }) => {
-    if (data?.length) {
+    if (!data?.length) {
         return <p>No data available.</p>;
     }
 
