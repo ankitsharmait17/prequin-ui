@@ -28,7 +28,9 @@ const InvestorsList: React.FC = () => {
             {isInvestorsListLoading && <Spinner />}
             <h2>Investors</h2>
             {!isError && <Table data={investorList} />}
-            {isError && <p>Some error occurred. Please try again after some time.</p>}
+            {isError && (
+                <p>Some error occurred while fetching the list of Investors. Please try again after some time.</p>
+            )}
         </Fragment>
     );
 };

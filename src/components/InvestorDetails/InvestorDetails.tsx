@@ -57,7 +57,9 @@ const InvestorDetails: React.FC = () => {
             {!isCommitmentsLoading && !isError && commitmentsList?.length !== 0 && (
                 <CommitmentsTable data={commitmentsList} />
             )}
-            {isError && <p>Some error occurred. Please try again after some time.</p>}
+            {isError && (
+                <p>Some error occurred while fetching the commitment details. Please try again after some time.</p>
+            )}
         </Fragment>
     );
 };
