@@ -8,7 +8,7 @@ export const routes: RouteObject[] = [
         element: <InvestorsList />,
     },
     {
-        path: '/investor/:id',
+        path: '/investor/:investorId',
         element: <InvestorDetails />,
     },
 ];

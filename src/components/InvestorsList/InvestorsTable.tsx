@@ -2,7 +2,7 @@ import React from 'react';
 import { Firm } from '../../services/investors/types';
 import { Link } from 'react-router-dom';
 import { formatDate } from '../../utils';
-import './Table.css';
+import '../Common/Table/Table.css';
 
 interface TableProps {
     data: Firm[];
@@ -14,8 +14,8 @@ const Table: React.FC<TableProps> = ({ data }) => {
     }
 
     return (
-        <table className='investors-table'>
-            <thead className='investors-table-header'>
+        <table className='table'>
+            <thead className='table-header'>
                 <tr>
                     <th>Firm Id</th>
                     <th>Firm Name</th>
@@ -24,14 +24,14 @@ const Table: React.FC<TableProps> = ({ data }) => {
                     <th>Address</th>
                 </tr>
             </thead>
-            <tbody className='investors-table-body'>
+            <tbody className='table-body'>
                 {data.map((item) => (
                     <tr key={item.firm_id}>
                         <td>
                             <Link to={`investor/${item.firm_id}`}>{item.firm_id}</Link>{' '}
                         </td>
                         <td>{item.firm_name}</td>
-                        <td className='investors-table-body-firm-type'>{item.firm_type}</td>
+                        <td className='table-body-firm-type'>{item.firm_type}</td>
                         <td>{formatDate(item.date_added)}</td>
                         <td>{item.address}</td>
                     </tr>
