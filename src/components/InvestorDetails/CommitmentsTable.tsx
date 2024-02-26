@@ -7,7 +7,7 @@ interface CommitmentsTableProps {
 }
 
 const CommitmentsTable: React.FC<CommitmentsTableProps> = ({ data }) => {
-    if (data.length === 0) {
+    if (data?.length) {
         return <p>No data available.</p>;
     }
 
@@ -22,7 +22,7 @@ const CommitmentsTable: React.FC<CommitmentsTableProps> = ({ data }) => {
                 </tr>
             </thead>
             <tbody className='table-body'>
-                {data.map((item) => (
+                {data?.map((item) => (
                     <tr key={item.id}>
                         <td>{item.id}</td>
                         <td>{item.firm_id}</td>

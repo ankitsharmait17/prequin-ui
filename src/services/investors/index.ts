@@ -10,14 +10,9 @@ export class InvestorsService {
         return fetch(`${this.config.baseUrl}/api/investors`, {
             method: 'GET',
             headers,
-        })
-            .then((response) => {
-                if (response.ok) return response.json();
-                return Promise.reject(new Error('Error while fetching investors'));
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        }).then((response) => {
+            if (response.ok) return response.json();
+        });
     }
 
     getCommitments(request: GetCommitmentsRequest): Promise<Commitment[]> {
@@ -30,13 +25,8 @@ export class InvestorsService {
         return fetch(`${this.config.baseUrl}/api/investor/commitment/${asset_class}/${investor_id}`, {
             method: 'GET',
             headers,
-        })
-            .then((response) => {
-                if (response.ok) return response.json();
-                return Promise.reject(new Error('Error while fetching commitments'));
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        }).then((response) => {
+            if (response.ok) return response.json();
+        });
     }
 }

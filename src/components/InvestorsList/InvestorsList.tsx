@@ -6,15 +6,20 @@ import Spinner from '../Common/Spinner/Spinner';
 
 const InvestorsList: React.FC = () => {
     const [investorList, setInvestorList] = useState<Firm[]>([]);
-    const [isInvestorsListLoading, setInvestorsListLoading] = useState<boolean>(false);
+    const [isInvestorsListLoading, setIsInvestorsListLoading] = useState<boolean>(false);
+    const [isError, setIsError] = useState<boolean>(false);
 
     useEffect(() => {
-        setInvestorsListLoading(true);
+        setIsError(false);
+        setIsInvestorsListLoading(true);
         investorsServiceManager
             .getInvestors()
             .then((investorListData) => setInvestorList(investorListData))
+            .catch((error) => {
+                setIsError(true);
+            })
             .finally(() => {
-                setInvestorsListLoading(false);
+                setIsInvestorsListLoading(false);
             });
     }, []);
 
@@ -22,7 +27,8 @@ const InvestorsList: React.FC = () => {
         <Fragment>
             {isInvestorsListLoading && <Spinner />}
             <h2>Investors</h2>
-            <Table data={investorList} />
+            {!isError && <Table data={investorList} />}
+            {isError && <p>Some error occurred. Please try again after some time.</p>}
         </Fragment>
     );
 };

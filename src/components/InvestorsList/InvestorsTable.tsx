@@ -9,7 +9,7 @@ interface TableProps {
 }
 
 const Table: React.FC<TableProps> = ({ data }) => {
-    if (data.length === 0) {
+    if (data?.length) {
         return <p>No data available.</p>;
     }
 
@@ -25,7 +25,7 @@ const Table: React.FC<TableProps> = ({ data }) => {
                 </tr>
             </thead>
             <tbody className='table-body'>
-                {data.map((item) => (
+                {data?.map((item) => (
                     <tr key={item.firm_id}>
                         <td>
                             <Link to={`investor/${item.firm_id}`}>{item.firm_id}</Link>{' '}
