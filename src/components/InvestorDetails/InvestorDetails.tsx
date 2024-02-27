@@ -6,12 +6,35 @@ import { Commitment } from '../../services/investors/types';
 import CommitmentsTable from './CommitmentsTable';
 import Spinner from '../Common/Spinner/Spinner';
 
+/**
+ * React functional component representing the details page for a specific investor.
+ * @component
+ */
 const InvestorDetails: React.FC = () => {
+    /**
+     * React hook to retrieve the parameters from the current route.
+     */
     let { investorId } = useParams();
+
+    /**
+     * State hook to manage the list of commitments for the investor.
+     */
     const [commitmentsList, setCommitmentsList] = useState<Commitment[]>([]);
+
+    /**
+     * State hook to track the loading status of commitments data.
+     */
     const [isCommitmentsLoading, setIsCommitmentsLoading] = useState<boolean>(false);
+
+    /**
+     * State hook to indicate if an error occurred during data fetching.
+     */
     const [isError, setIsError] = useState<boolean>(false);
 
+    /**
+     * Function to fetch commitment details for a selected asset class.
+     * @param {string} selectedAsset - The selected asset class.
+     */
     const fetchCommitmentDetails = (selectedAsset: string) => {
         if (selectedAsset?.length && investorId?.length) {
             setIsError(false);
@@ -32,10 +55,18 @@ const InvestorDetails: React.FC = () => {
         }
     };
 
+    /**
+     * Event handler for changes in the selected asset dropdown.
+     * @param {React.ChangeEvent<HTMLSelectElement>} event - The change event object.
+     */
     const handleSelectedAssetChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         fetchCommitmentDetails(event.target.value);
     };
 
+    /**
+     * Render function for the InvestorDetails component.
+     * @returns {JSX.Element} JSX representing the component structure.
+     */
     return (
         <Fragment>
             <div>
