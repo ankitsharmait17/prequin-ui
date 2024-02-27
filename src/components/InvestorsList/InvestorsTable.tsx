@@ -4,11 +4,29 @@ import { Link } from 'react-router-dom';
 import { formatDate } from '../../utils';
 import '../Common/Table/Table.css';
 
+/**
+ * Props for the Table component.
+ * @typedef {Object} TableProps
+ * @property {Firm[]} data - Array of firms to be displayed in the table.
+ */
 interface TableProps {
     data: Firm[];
 }
 
+/**
+ * React functional component representing a table for displaying firm data.
+ * @function
+ * @name Table
+ * @component
+ * @param {Object} props - React props for the Table component.
+ * @param {Firm[]} props.data - Array of firms to be displayed in the table.
+ * @returns {JSX.Element} JSX representing the Table component.
+ */
 const Table: React.FC<TableProps> = ({ data }) => {
+    /**
+     * Render function for the Table component.
+     * @returns {JSX.Element} JSX representing the structure of the Table.
+     */
     if (!data?.length) {
         return <p>No data available.</p>;
     }
